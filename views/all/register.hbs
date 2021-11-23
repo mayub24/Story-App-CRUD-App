@@ -1,0 +1,57 @@
+<div class="main-form">
+
+    <div class="card">
+
+        <h1>Register</h1>
+
+        {{#if errors}}
+
+        {{#each errors}}
+
+        <div class="errz">
+            <p class="err-msg">{{this.msg}}</p>
+        </div>
+
+        {{/each}}
+
+        {{else}}
+
+
+        {{#each userError}}
+
+        <div class="errz">
+            <p class="err-msg">{{this}}</p>
+        </div>
+        {{/each}}
+
+
+        {{/if}}
+
+
+        <form action="/users" method="POST" enctype="multipart/form-data">
+
+            <div class="field">
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+
+
+            <div class="field">
+                <input type="email" id="email" name="email" placeholder="Email">
+            </div>
+
+
+            <div class="field">
+                <input type="password" id="pass" name="password" placeholder="Password">
+            </div>
+
+            <div id="pix" class="grid-area">
+                <label for="" class="profilePic">Add Profile Photo</label>
+                <br>
+                <input type="file" name="pic" id="pic">
+                <br>
+            </div>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</div>

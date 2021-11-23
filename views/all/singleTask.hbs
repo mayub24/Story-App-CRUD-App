@@ -1,0 +1,18 @@
+<div class="singleTask d-flex flex-column align-items-center justify-content-center">
+    {{#if oneTask}}
+    <h1>{{oneTask.title}}</h1>
+    <p>{{oneTask.description}}</p>
+    <h6><strong>- {{oneTask.users.username}}</strong></h6>
+    <h5>{{oneTask.privacy}}</h5>
+
+    {{/if}}
+
+
+    <div class="div">
+        {{{checkEquality user oneTask.users oneTask._id}}}
+    </div>
+
+    {{!-- {{#if}} --}}
+
+
+    {{!-- {{/if}} --}}

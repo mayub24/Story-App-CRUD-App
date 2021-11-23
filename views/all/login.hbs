@@ -1,0 +1,39 @@
+<div class="main-form">
+
+    <div class="card">
+        <h1>Login</h1>
+
+        {{#if errors}}
+
+        {{#each errors}}
+
+        <div class="errz">
+            <p class="err-msg">{{this}}</p>
+        </div>
+
+        {{/each}}
+
+        {{/if}}
+
+
+        <form action="/login" method="post">
+
+            <div id="log">
+
+                <p>
+                    <input type="text" placeholder="Username" name="username" id="username">
+                </p>
+
+                <p>
+                    <input type="password" placeholder="Password" name="password" id="pass">
+                </p>
+
+                <input type="submit" id="login-btn" value="Login">
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

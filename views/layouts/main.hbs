@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>User App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+
+            <div class="nav-flex">
+                <a href="/">
+                    <h2>Story App</h2>
+                </a>
+
+                {{!-- if there is session, add dashboard, tasks, home and logout --}}
+                {{#if user}}
+                <ul>
+                    <li>
+                        <a href="/tasks">All Stories</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/users/{{user}}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+                {{/if}}
+
+                {{!-- If no session, only have home and login --}}
+                {{#unless user}}
+                <ul>
+                    <li>
+                        <a href="/home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+
+                    <li>
+                        <a href="/users/register">Sign Up</a>
+                    </li>
+
+                </ul>
+                {{/unless}}
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {{{body}}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

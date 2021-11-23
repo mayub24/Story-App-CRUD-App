@@ -1,0 +1,54 @@
+<h1 class="task">Story Manager</h1>
+
+{{#if tasks}}
+
+
+<table class="table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each tasks}}
+        <tr>
+            <td>{{title}}</td>
+            <td class="text-truncate">{{shortenDescription description}}</td>
+            <td>{{privacy}}</td>
+            <td class="table-tasks">
+                <button>
+                    <a href="tasks/edit/{{this._id}}">
+                        <i class="far fa-edit" style="color: skyblue;"></i>
+                    </a>
+                </button>
+
+                <form action="/tasks/delete/{{this._id}}?_method=DELETE" method="POST">
+                    <button type="submit">
+                        <i class="fas fa-trash" style="color: red"></i>
+                    </button>
+                </form>
+
+                <button>
+                    <a href="tasks/{{this._id}}">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<a href="/addTask" class="add-task-btn">Add New Story</a>
+
+{{else}}
+
+<h1 class="no-tasks">No Stories added.</h1>
+
+<a href="/addTask">Add Story</a>
+
+{{/if}}

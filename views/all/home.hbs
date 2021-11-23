@@ -1,0 +1,22 @@
+{{#if userInfo}}
+<div class="home-page">
+    <div class="main">
+        <h1>Welcome to Story App <span>{{userInfo.username}}</span>!</h1>
+
+        <h3>Share your stories with the world and learn from their experiences!</h3>
+
+    </div>
+</div>
+{{/if}}
+
+{{#unless userInfo}}
+<div class="home-page">
+    <div class="main">
+
+        <h1>Welcome to Story App!</h1>
+
+        <h3>Sign up and share your stories with the world and learn from their experiences!</h3>
+
+    </div>
+</div>
+{{/unless}}

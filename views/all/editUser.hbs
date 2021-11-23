@@ -1,0 +1,75 @@
+<h1 class="task">Edit Profile</h1>
+
+{{#if errors}}
+
+{{#each errors}}
+
+<p class="err-msg">{{this.msg}}</p>
+
+{{/each}}
+
+<form action="/users/edit/{{userInfo._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+
+    <img src="/imgs/{{userInfo.profilePic}}" alt="" width="100px" height="100px" style="border-radius: 50px;">
+
+    <div class="editField">
+        <input type="text" id="username" name="username" value="{{userInfo.username}}">
+    </div>
+
+    <div class="editField">
+        <input type="email" id="email" name="email" value="{{userInfo.email}}">
+    </div>
+
+    <div class="editField">
+        <input type="password" id="pass" name="password" value="shortenPassword {{userInfo.password}}">
+    </div>
+
+    <br>
+
+    <div id="pix" class="grid-area">
+        <label for="" style="display: block;text-align: center; margin: 0 auto;">Update Profile Photo</label>
+        <br>
+        <input type="file" name="pic" id="pic">
+        <br>
+    </div>
+
+    {{!-- <input type="submit" value="Update User"> --}}
+    <input type="submit" value="Update User">
+
+    <br>
+</form>
+
+
+{{else}}
+
+<form action="/users/edit/{{editUserInfo._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+
+    <img src="/imgs/{{editUserInfo.profilePic}}" alt="" width="100px" height="100px" style="border-radius: 50px;">
+
+    <div class="editField">
+        <input type="text" id="username" name="username" value="{{editUserInfo.username}}">
+    </div>
+
+    <div class="editField">
+        <input type="email" id="email" name="email" value="{{editUserInfo.email}}">
+    </div>
+
+    <div class="editField">
+        <input type="password" id="pass" name="password" value="{{editUserInfo.password}}">
+    </div>
+
+    <br>
+
+    <div id="pix" class="grid-area">
+        <label for="" style="display: block;text-align: center; margin: 0 auto;">Update Profile Photo</label>
+        <br>
+        <input type="file" name="pic" id="pic">
+        <br>
+    </div>
+
+    <input type="submit" value="Update User">
+
+    <br>
+</form>
+
+{{/if}}

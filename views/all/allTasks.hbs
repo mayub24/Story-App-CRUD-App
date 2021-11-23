@@ -1,0 +1,67 @@
+{{!-- Functionality of All Tasks --}}
+{{!-- If res.locals.user is valid, then show logged in users tasks in the start --}}
+{{!-- under the logged in users tasks, show the other users tasks --}}
+
+<h1 class="py-4">My Stories</h1>
+
+<div class="row-head">
+    <div class="row mx-auto">
+        {{#if currentTask}}
+        {{#each currentTask}}
+
+        <div class=" col col-lg-4 col-md-6 col-sm-12">
+            <div class="card container-fluid" style="width: 300px; height: 250px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text text-truncate">{{this.description}}</p>
+                    <a href="tasks/{{this._id}}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        {{else}}
+
+        <h6 style="color: red;">No Stories created.</h6>
+
+        {{/if}}
+    </div>
+</div>
+
+
+<h1>Checkout other Stories</h1>
+
+<div class="row-head">
+    <div class="row mx-auto">
+        {{#if tasks}}
+        {{#each tasks}}
+
+        <a href="tasks/{{this._id}}" class="w-100">
+            <blockquote class="cardz blockquote w-100 my-3">
+                <h3><strong>{{this.title}}</strong></h3>
+                <p class="mb-0 text-truncate">{{shortenDescription this.description}}</p>
+
+                <div class="d-flex flex-row align-items-center py-3">
+
+                    <div>
+                        <img src="/imgs/{{this.users.profilePic}}" class="img-thumbnail" width="75px" height="75px">
+                    </div>
+
+                    <div>
+                        <footer class="blockquote-footer ml-5">{{this.users.username}}<cite title="Source Title">
+                                <strong>@</strong>
+                                {{this.users.email}}</cite></footer>
+                    </div>
+
+                </div>
+            </blockquote>
+        </a>
+        {{/each}}
+
+        {{else}}
+
+        <h6 style="color: red;">No Stories created.</h6>
+
+        {{/if}}
+    </div>
+</div>

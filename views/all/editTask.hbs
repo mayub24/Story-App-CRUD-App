@@ -1,0 +1,50 @@
+<h1 class="task">Edit Story</h1>
+
+<br>
+
+{{#if errors}}
+
+{{#each errors}}
+
+<h3 class="err-msg">{{this.msg}}</h3>
+
+{{/each}}
+
+{{/if}}
+
+
+<form action="/tasks/edit/{{task._id}}?_method=PUT" method="post">
+
+    <div id="log">
+
+        <p>
+            <input type="text" placeholder="Title" name="title" id="title" value="{{task.title}}">
+        </p>
+
+        <p>
+            <textarea name="description" id="description" placeholder="Description"
+                rows="8">{{task.description}}</textarea>
+        </p>
+
+        <div class="row my-3 mx-auto">
+            <div class="input-field">
+                {{#select task.privacy}}
+                <select name="privacy" id="privacy">
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+
+        <p>
+            <input type="submit" id="log-button" value="Update Story">
+        </p>
+
+        <p>
+            <a href="/dashboard" class="cancel-btn">Cancel</a>
+        </p>
+
+    </div>
+
+</form>
