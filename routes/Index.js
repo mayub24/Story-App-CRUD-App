@@ -4,7 +4,7 @@ const router = express.Router();
 const userDB = require('../models/userModel');
 const taskModel = require('../models/taskModel');
 const access = require('../middleware/access');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // GET LOGIN PAGE
 router.get('/login', access.givePermission, async (req, res) => {
@@ -39,7 +39,7 @@ router.post('/login', access.givePermission, async (req, res) => {
         }
         else {
             const { password } = currentUser;
-            const checkPass = await bcrypt.compare(req.body.password, password); // checking if typed password == password already present
+            const checkPass = await bcrypt.compareSync(req.body.password, password); // checking if typed password == password already present
 
             if (checkPass) {
                 // So if the passwords match, create session

@@ -56,7 +56,7 @@ const exphbs = require('express-handlebars');
 // Connect DB
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.mongoURI);
+        await mongoose.connect('mongodb+srv://suhaib:123@cluster0.ea6epjs.mongodb.net/?retryWrites=true&w=majority');
         console.log('Connected to database...');
     } catch (err) {
         console.log(err.message);

@@ -3,7 +3,7 @@ const router = express.Router();
 const userDB = require('../models/userModel');
 const taskModel = require('../models/taskModel');
 const access = require('../middleware/access');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // Express validator
 const { check, validationResult } = require('express-validator');
@@ -95,7 +95,7 @@ router.post('/',
 
                     // Bcrypt to hash password
                     let salt = await bcrypt.genSalt(10);
-                    let hash = await bcrypt.hash(newUser.password, salt);
+                    let hash = await bcrypt.hashSync(newUser.password, salt);
                     newUser.password = hash;
 
                     user = await newUser.save();
@@ -156,7 +156,7 @@ router.put('/edit/:id', access.redirectUser,
 
                     // Bcrypt to hash password
                     let salt = await bcrypt.genSalt(10);
-                    let hash = await bcrypt.hash(req.body.password, salt);
+                    let hash = await bcrypt.hashSync(req.body.password, salt);
                     req.body.password = hash;
 
                     let updateUser = await userDB.updateOne(
