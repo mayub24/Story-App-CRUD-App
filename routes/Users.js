@@ -76,7 +76,7 @@ router.post('/',
             try {
                 let user = await userDB.findOne({ email });
                 let userName = await userDB.findOne({ username });
-
+    
                 if (user || userName) {
                     errz.push('User already exists.');
                     console.log(errz);
@@ -97,6 +97,8 @@ router.post('/',
                     let salt = await bcrypt.genSalt(10);
                     let hash = await bcrypt.hashSync(newUser.password, salt);
                     newUser.password = hash;
+
+                    res.json(newUser);
 
                     user = await newUser.save();
 
