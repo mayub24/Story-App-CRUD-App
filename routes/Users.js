@@ -98,7 +98,7 @@ router.post('/',
                     let hash = await bcrypt.hashSync(newUser.password, salt);
                     newUser.password = hash;
 
-                    res.json(newUser);
+                    // res.json(newUser);
 
                     user = await newUser.save();
 
